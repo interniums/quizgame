@@ -23,7 +23,7 @@ export default function ResultPage() {
   const answers = globalState?.answers
   const hateObjects = answers.hate.map((item) => t(item).slice(0, -2))
   const preferences = answers.preferences.map((item) => t(item).slice(0, -2))
-  const [data, setData] = useState<DataItem>({
+  const [data] = useState<DataItem>({
     order: [1, 2, 3, 4, 5, 6],
     title: [
       'What is your prefered language?',
@@ -91,7 +91,7 @@ export default function ResultPage() {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className="pt-10 pb-14 px-8 grid justify-items-center w-full"
+      className="pt-10 pb-14 px-8 min-h-screen grid justify-items-center w-full"
     >
       {
         <ReactConfetti
