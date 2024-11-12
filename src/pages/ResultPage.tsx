@@ -116,7 +116,10 @@ export default function ResultPage() {
         </div>
       </div>
       <div className="mt-8 grid items-end w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
-        <div className="flex items-center justify-center w-full gap-2 mb-8" onClick={() => exportToCSV()}>
+        <div
+          className="flex items-center justify-center w-full gap-2 mb-8 cursor-pointer"
+          onClick={() => exportToCSV()}
+        >
           <img src={download} alt="download" className="size-8" />
           <h1 className="text-xl hover:text-slate-400">{t('download')}</h1>
         </div>
