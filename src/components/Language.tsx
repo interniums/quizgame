@@ -7,15 +7,10 @@ import axios from 'axios'
 
 const LANGUAGES_ENDPOINT = 'https://quizproject/questions/language'
 
-interface Language {
-  code: string
-  name: string
-}
-
 export default function Language() {
   const { t } = useTranslation()
-  const { setGlobalState } = useGlobalContext()
-  const [languages, setLanguages] = useState<string[]>([t('English'), t('French'), t('German'), t('Spanish')])
+  const { globalState, setGlobalState } = useGlobalContext()
+  const [languages, setLanguages] = useState<string[]>(['English', 'French', 'German', 'Spanish'])
 
   // restfull implementation. if used, add loading and error state
   useEffect(() => {
@@ -26,10 +21,6 @@ export default function Language() {
       } catch (err) {
         console.error(err)
       }
-
-      if (!languages.length) {
-        setLanguages([t('English'), t('French'), t('German'), t('Spanish')])
-      }
     }
     getLanguages()
   }, [])
@@ -37,8 +28,7 @@ export default function Language() {
   const handleSelect = (item: string) => {
     setGlobalState((prev) => ({
       ...prev,
-      path: '/quiz/gender',
-      progress: 2,
+      progress: 1,
       answers: { ...prev.answers, language: item },
     }))
   }
@@ -58,14 +48,15 @@ export default function Language() {
         <h1 className="text-center text-3xl font-bold">{t('languageQuestion')}</h1>
         <p className="text-center text-md opacity-70">{t('chooseLanguage')}</p>
       </div>
-      <div className="mt-20 grid gap-4 w-full">
+      <div className="mt-20 grid gap-4 w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
         {languages?.map((item) => (
           <button
             onClick={() => handleSelect(item)}
             key={item}
-            className="border rounded-lg w-full text-center text-3xl py-4 hover:bg-slate-100"
+            className="border rounded-lg w-full text-center text-3xl py-4 hover:bg-slate-100 shadow-sm transition-all duration-200 ease-in-out"
+            style={{ outline: globalState?.answers?.language == item ? '2px solid gray' : '' }}
           >
-            {t(`${item}`)}
+            {t(item)}
           </button>
         ))}
       </div>

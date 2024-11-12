@@ -1,10 +1,8 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
-const PAGE_COUNT = 5
 
 export interface GlobalState {
-  path: string
+  paths: string[]
   progress: number
-  pageCount: number
   answers: {
     language: string
     gender: string
@@ -28,11 +26,10 @@ interface GlobalProviderProps {
 
 export const GlobalProvider = ({ children }: GlobalProviderProps) => {
   const [globalState, setGlobalState] = useState<GlobalState>({
-    path: '/quiz/language',
-    progress: 1,
-    pageCount: PAGE_COUNT,
+    paths: ['/quiz/language', '/quiz/gender', '/quiz/age', '/quiz/hate-objects', '/quiz/preferences'],
+    progress: 0,
     answers: {
-      language: 'English',
+      language: '',
       gender: '',
       age: '',
       hate: [],

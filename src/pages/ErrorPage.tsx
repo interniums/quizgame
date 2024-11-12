@@ -16,7 +16,7 @@ export default function ErrorPage() {
         <div>
           <h1 className="text-center text-4xl font-bold mb-2">Whoops!</h1>
           <h1 className="text-center text-2xl">Someone screwed up, let's get away quickly</h1>
-          <img src={errorImage} alt="error image" className="mt-4" />
+          <img src={errorImage} alt="error image" className="mt-4 rounded-md" />
           <div className="w-full flex items-center justify-center mt-4">
             <button
               onClick={() => {

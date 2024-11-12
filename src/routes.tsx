@@ -9,7 +9,7 @@ import EmailPage from './pages/EmailPage'
 import ErrorPage from './pages/ErrorPage'
 import Preferences from './components/Preferences'
 import App from './App'
-import Hate from './components/Hate'
+import HateObjects from './components/HateObjects'
 
 export const routes: RouteObject[] = [
   {
@@ -18,19 +18,20 @@ export const routes: RouteObject[] = [
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/quiz',
+        path: 'quiz',
         element: <QuizPage />,
+        errorElement: <ErrorPage />,
         children: [
-          { path: '/quiz/language', element: <Language /> },
-          { path: '/quiz/gender', element: <Gender /> },
-          { path: '/quiz/age', element: <Age /> },
-          { path: '/quiz/hate', element: <Hate /> },
-          { path: '/quiz/preferences', element: <Preferences /> },
-          { path: '/quiz/loading', element: <QuizLoading /> },
+          { path: 'language', element: <Language /> },
+          { path: 'gender', element: <Gender /> },
+          { path: 'age', element: <Age /> },
+          { path: 'hate-objects', element: <HateObjects /> },
+          { path: 'preferences', element: <Preferences /> },
+          { path: 'loading', element: <QuizLoading /> },
         ],
       },
-      { path: '/email', element: <EmailPage /> },
-      { path: '/result', element: <ResultPage /> },
+      { path: 'email', element: <EmailPage />, errorElement: <ErrorPage /> },
+      { path: 'result', element: <ResultPage />, errorElement: <ErrorPage /> },
     ],
   },
 ]
