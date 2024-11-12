@@ -1,16 +1,13 @@
 Quiz App
 
 libs used:
-    * axios
-    * framer-motion
-    * i18next
-    * react
-    * react-confetti 
-    * react-dom 
-    * react-i18next 
-    * react-router-dom 
-    * xlsx 
-    * tailwindcss 
+* axios (fetching for possible rest api)
+* framer-motion (animations)
+* i18next (translations)
+* react-confetti (confetti effects)
+* react-dom (routing)
+* xlsx (creation of scv files)
+* tailwindcss (better css)
 
 features:
   * data saved in local starage and synced with globalContext
