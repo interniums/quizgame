@@ -1,16 +1,16 @@
 Quiz App
 
 libs used:
-    "axios": "^1.7.7",
-    "framer-motion": "^11.11.11",
-    "i18next": "^23.16.5",
-    "react": "^18.3.1",
-    "react-confetti": "^6.1.0",
-    "react-dom": "^18.3.1",
-    "react-i18next": "^15.1.1",
-    "react-router-dom": "^6.28.0",
-    "xlsx": "^0.18.5"
-    "tailwindcss": "^3.4.14",
+    * axios
+    * framer-motion
+    * i18next
+    * react
+    * react-confetti 
+    * react-dom 
+    * react-i18next 
+    * react-router-dom 
+    * xlsx 
+    * tailwindcss 
 
 features:
   * data saved in local starage and synced with globalContext
