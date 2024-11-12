@@ -12,11 +12,13 @@ export default function ErrorPage() {
 
   return (
     <div className="absolute inset-0 flex items-start justify-center">
-      <div className="px-8 h-full py-20 grid">
+      <div className="px-8 h-full w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5 py-20 md:py-8 grid">
         <div>
           <h1 className="text-center text-4xl font-bold mb-2">Whoops!</h1>
           <h1 className="text-center text-2xl">Someone screwed up, let's get away quickly</h1>
-          <img src={errorImage} alt="error image" className="mt-4 rounded-md" />
+          <div className="w-full flex items-center justify-center">
+            <img src={errorImage} alt="error image" className="mt-4 rounded-md" />
+          </div>
           <div className="w-full flex items-center justify-center mt-4">
             <button
               onClick={() => {
