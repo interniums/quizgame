@@ -21,8 +21,8 @@ export default function ResultPage() {
   const { t } = useTranslation()
   const { globalState, setGlobalState } = useGlobalContext()
   const answers = globalState?.answers
-  const hateObjects = answers.hate.map((item) => t(item).slice(0, -2))
-  const preferences = answers.preferences.map((item) => t(item).slice(0, -2))
+  const hateObjects = answers.hate.map((item) => t(item).slice(0, -1))
+  const preferences = answers.preferences.map((item) => t(item).slice(0, -1))
   const [data] = useState<DataItem>({
     order: [1, 2, 3, 4, 5, 6],
     title: [
