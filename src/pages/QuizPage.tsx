@@ -7,11 +7,11 @@ export default function QuizPage() {
   const location = useLocation()
 
   return (
-    <>
+    <div className="w-full max-w-full overflow-x-hidden">
       {window.location.pathname !== '/quiz/loading' ? (
         <Header progress={globalState.progress} setGlobalState={setGlobalState} globalState={globalState} />
       ) : null}
       <Outlet key={location.pathname} />
-    </>
+    </div>
   )
 }
