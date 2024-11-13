@@ -61,9 +61,9 @@ export default function QuizLoading() {
             <img src={waitingGif} alt="loading" className="mt-4 rounded-md" />
           </div>
         </div>
-        <div className="w-full">
+        <div className="w-full mt-8">
           <p className="text-center text-2xl">{Math.round(progress)}%</p>
-          <div className="relative w-full border h-5 rounded-full bg-slate-300 mt-4">
+          <div className="relative w-full border h-5 rounded-full bg-slate-300 mt-6">
             <motion.div
               initial={{ width: '0%' }}
               animate={{ width: '100%' }}
