@@ -76,7 +76,7 @@ export default function EmailPage() {
       <div className="grid items-end w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
         <button
           onClick={() => handleSubmit()}
-          className={`border rounded-lg w-full text-center flex items-center justify-center transition-all duration-400 ease-in-out bg-slate-100 mt-32 ${
+          className={`border rounded-lg w-full text-center flex items-center justify-center transition-all duration-400 ease-in-out bg-slate-200 mt-32 ${
             email.length ? 'hover:bg-slate-100 shadow-md bg-white' : ''
           } ${screenHeight < 750 ? 'text-xl py-3' : 'text-2xl py-4'}`}
           disabled={!email.length ? true : false}
