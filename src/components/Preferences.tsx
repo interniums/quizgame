@@ -35,7 +35,6 @@ export default function Preferences() {
     ['preference9', '🤧'],
     ['preference10', '😈'],
   ])
-  const [emojis, setEmojis] = useState<string[]>(['🐺', '💃', '🥰', '💁‍♀️', '👑', '🤑', '🤠', '🏫', '🤧', '😈'])
   const [choosenPreferences, setChoosenPreferences] = useState<string[]>(globalState.answers.preferences || [])
   const [personalizedPreferences, setPersonalizedPreferences] = useState<[string, string][]>([])
   const navigate = useNavigate()
