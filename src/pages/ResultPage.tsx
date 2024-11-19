@@ -21,8 +21,6 @@ export default function ResultPage() {
   const { t } = useTranslation()
   const { globalState, setGlobalState } = useGlobalContext()
   const answers = globalState?.answers
-  const hateObjects = answers.hate.map((item) => t(item).slice(0, -2))
-  const preferences = answers.preferences.map((item) => t(item).slice(0, -2))
   const [data] = useState<DataItem>({
     order: [1, 2, 3, 4, 5, 6],
     title: [
@@ -33,13 +31,20 @@ export default function ResultPage() {
       'What are your favorite topics?',
       'Email',
     ],
-    type: ['single-select', 'single-select-image', 'single-select', 'multiple-select', 'buble', 'email'],
+    type: [
+      'single-select',
+      'single-select-image',
+      'single-select',
+      'multiple-select',
+      'buble',
+      'email',
+    ],
     answer: [
       t(answers.language),
       t(answers.gender).slice(0, -2),
       t(answers.age),
-      hateObjects,
-      preferences,
+      t(answers.hate),
+      t(answers.preferences),
       t(answers.email),
     ],
   })
@@ -49,7 +54,15 @@ export default function ResultPage() {
     setGlobalState((prev) => ({
       ...prev,
       progress: 0,
-      answers: { ...prev.answers, language: '', gender: '', age: '', hate: [], preferences: [], email: '' },
+      answers: {
+        ...prev.answers,
+        language: '',
+        gender: '',
+        age: '',
+        hate: [],
+        preferences: [],
+        email: '',
+      },
     }))
   }
 
@@ -57,7 +70,9 @@ export default function ResultPage() {
   useEffect(() => {
     const pushData = async () => {
       try {
-        const response = await axios.post(`${POST_DATA_ENDPOINT}`, { globalState })
+        const response = await axios.post(`${POST_DATA_ENDPOINT}`, {
+          globalState,
+        })
         if (response.status == 200) {
           // set success
         }
@@ -74,7 +89,9 @@ export default function ResultPage() {
       order: data.order[index],
       title: data.title[index],
       type: data.type[index],
-      answer: Array.isArray(data.answer[index]) ? (data.answer[index] as string[]).join(', ') : data.answer[index],
+      answer: Array.isArray(data.answer[index])
+        ? (data.answer[index] as string[]).join(', ')
+        : data.answer[index],
     }))
 
     // Creating a worksheet

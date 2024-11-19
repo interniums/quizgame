@@ -1,16 +1,34 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { GlobalState, useGlobalContext } from './context/GlobalContext'
 import { Outlet, useNavigate } from 'react-router-dom'
 import i18n from 'i18next'
 
 type Language = 'English' | 'French' | 'German' | 'Spanish'
-const langMap: Record<Language, string> = { English: 'en', French: 'fr', German: 'de', Spanish: 'es' }
+const langMap: Record<Language, string> = {
+  English: 'en',
+  French: 'fr',
+  German: 'de',
+  Spanish: 'es',
+}
 
 function App() {
   const { globalState, setGlobalState } = useGlobalContext()
   const navigate = useNavigate()
   const language = globalState?.answers?.language as Language
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight)
   console.log(globalState)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenHeight(window.innerHeight)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   // checking if local storage exists, if so, setting globalState based on local storage data; if don't, setting local storage to globalState hardcoded default data
   useEffect(() => {
@@ -48,7 +66,7 @@ function App() {
     }
   }, [globalState.progress, navigate])
 
-  return <Outlet />
+  return <Outlet context={{ screenHeight: screenHeight }} />
 }
 
 export default App
