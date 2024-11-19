@@ -17,6 +17,7 @@ function App() {
   const [screenHeight, setScreenHeight] = useState(window.innerHeight)
   console.log(globalState)
   const [language, setLanguage] = useState(globalState?.answers?.language as Language)
+  console.log(language)
 
   useEffect(() => {
     if (globalState?.answers?.language) {

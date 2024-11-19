@@ -4,6 +4,7 @@ import { useGlobalContext } from '../context/GlobalContext'
 import success from '../assets/gifs/walking man.webp'
 import download from '../assets/images/dwoload.svg'
 import ReactConfetti from 'react-confetti'
+import i18n from 'i18next'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { writeFile, utils } from 'xlsx'
@@ -55,7 +56,7 @@ export default function ResultPage() {
       progress: 0,
       answers: {
         ...prev.answers,
-        language: 'English',
+        language: '',
         gender: '',
         age: '',
         hate: [],
@@ -63,6 +64,7 @@ export default function ResultPage() {
         email: '',
       },
     }))
+    i18n.changeLanguage('en')
   }
 
   // restfull implementation. if used, add loading, succes and error state
