@@ -7,6 +7,7 @@ import ReactConfetti from 'react-confetti'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { writeFile, utils } from 'xlsx'
+import { useOutletContext } from 'react-router-dom'
 
 const POST_DATA_ENDPOINT = 'https://quizproject/post-data'
 
@@ -15,6 +16,10 @@ type DataItem = {
   title: string[]
   type: string[]
   answer: (string | string[])[]
+}
+
+type OutletContextType = {
+  screenHeight: number
 }
 
 export default function ResultPage() {
@@ -31,14 +36,7 @@ export default function ResultPage() {
       'What are your favorite topics?',
       'Email',
     ],
-    type: [
-      'single-select',
-      'single-select-image',
-      'single-select',
-      'multiple-select',
-      'buble',
-      'email',
-    ],
+    type: ['single-select', 'single-select-image', 'single-select', 'multiple-select', 'buble', 'email'],
     answer: [
       t(answers.language),
       t(answers.gender).slice(0, -2),
@@ -48,6 +46,7 @@ export default function ResultPage() {
       t(answers.email),
     ],
   })
+  const { screenHeight } = useOutletContext<OutletContextType>()
 
   const handleRetakeQuiz = () => {
     localStorage.removeItem('data')
@@ -56,7 +55,7 @@ export default function ResultPage() {
       progress: 0,
       answers: {
         ...prev.answers,
-        language: '',
+        language: 'English',
         gender: '',
         age: '',
         hate: [],
@@ -89,9 +88,7 @@ export default function ResultPage() {
       order: data.order[index],
       title: data.title[index],
       type: data.type[index],
-      answer: Array.isArray(data.answer[index])
-        ? (data.answer[index] as string[]).join(', ')
-        : data.answer[index],
+      answer: Array.isArray(data.answer[index]) ? (data.answer[index] as string[]).join(', ') : data.answer[index],
     }))
 
     // Creating a worksheet
@@ -108,7 +105,7 @@ export default function ResultPage() {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className="pt-10 pb-14 px-8 min-h-screen grid justify-items-center w-full"
+      className="px-8 flex flex-col justify-around items-center w-full flex-grow"
     >
       {
         <ReactConfetti
@@ -125,23 +122,29 @@ export default function ResultPage() {
       }
       <div className="w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
         <div className="grid gap-2">
-          <h1 className="text-center text-4xl font-bold">{t('thanks')}</h1>
-          <p className="text-center text-md opacity-70">{t('comment')}</p>
+          <h1 className={`text-center font-bold ${screenHeight < 750 ? 'text-2xl' : 'text-3xl md:text-4xl'}`}>
+            {t('thanks')}
+          </h1>
+          <p className={`text-center opacity-70 ${screenHeight < 750 ? 'text-sm' : 'text-base'}`}>{t('comment')}</p>
         </div>
-        <div className="w-full mt-10 flex items-center justify-center">
+        <div className={`w-full flex justify-center mt-4 ${screenHeight < 750 ? 'size-96' : ''}`}>
           <img src={success} alt="success" className="rounded-md" />
         </div>
-      </div>
-      <div className="mt-8 grid items-end w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
         <div
-          className="flex items-center justify-center w-full gap-2 mb-8 cursor-pointer"
+          className="mt-4 flex items-center justify-center w-full gap-2 cursor-pointer"
           onClick={() => exportToCSV()}
         >
-          <img src={download} alt="download" className="size-8" />
-          <h1 className="text-xl hover:text-slate-400">{t('download')}</h1>
+          <img src={download} alt="download" className={`${screenHeight < 750 ? 'size-6' : 'size-7 md:size-8'}`} />
+          <h1 className={`text-xl hover:text-slate-400 ${screenHeight < 750 ? 'text-base' : 'text-lg'}`}>
+            {t('download')}
+          </h1>
         </div>
+      </div>
+      <div className="w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
         <button
-          className={`border rounded-lg w-full text-center text-3xl py-4 flex items-center justify-center transition-all duration-400 ease-in-out shadow-md hover:bg-slate-100`}
+          className={`border rounded-lg w-full text-center flex items-center justify-center transition-all duration-400 ease-in-out shadow-md hover:bg-slate-100 ${
+            screenHeight < 750 ? 'text-xl py-2' : 'py-3 md:py-4 text-2xl md:text-3xl'
+          }`}
           onClick={() => handleRetakeQuiz()}
         >
           {t('retakeQuiz')}

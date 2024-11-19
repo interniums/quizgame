@@ -16,12 +16,7 @@ export default function Language() {
   const { screenHeight } = useOutletContext<OutletContextType>()
   const { t } = useTranslation()
   const { globalState, setGlobalState } = useGlobalContext()
-  const [languages, setLanguages] = useState<string[]>([
-    'English',
-    'French',
-    'German',
-    'Spanish',
-  ])
+  const [languages, setLanguages] = useState<string[]>(['English', 'French', 'German', 'Spanish'])
 
   // restfull implementation. if used, add loading and error state
   useEffect(() => {
@@ -56,32 +51,31 @@ export default function Language() {
       className="w-full h-full flex flex-col items-center px-8 flex-grow justify-center"
     >
       <div className="grid gap-4">
-        <h1
-          className={`text-center text-2xl md:text-3xl font-bold ${
-            screenHeight < 700 ? 'text-xl' : ''
-          }`}
-        >
+        <h1 className={`text-center font-bold ${screenHeight < 700 ? 'text-xl' : 'text-2xl md:text-3xl'}`}>
           {t('languageQuestion')}
         </h1>
         <p
           className={`text-center text-sm md:text-base opacity-70 ${
-            screenHeight < 700 ? 'text-xs' : ''
+            screenHeight < 700 ? 'text-xs' : 'text-sm md:text-base'
           }`}
         >
           {t('chooseLanguage')}
         </p>
       </div>
-      <div className="mt-10 md:mt-20 grid gap-4 w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
+      <div
+        className={`grid gap-4 w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5 ${
+          screenHeight < 750 ? 'mt-10' : 'mt-10 md:mt-20'
+        }`}
+      >
         {languages?.map((item) => (
           <button
             onClick={() => handleSelect(item)}
             key={item}
-            className={`border rounded-lg w-full text-center text-2xl md:text-3xl hover:bg-slate-100 shadow-sm transition-all duration-200 ease-in-out ${
-              screenHeight < 700 ? 'text-lg py-3' : 'py-4'
+            className={`border rounded-lg w-full text-center hover:bg-slate-100 shadow-sm transition-all duration-200 ease-in-out ${
+              screenHeight < 700 ? 'text-lg py-3' : 'py-4 text-2xl md:text-3xl'
             }`}
             style={{
-              outline:
-                globalState?.answers?.language == item ? '2px solid gray' : '',
+              outline: globalState?.answers?.language == item ? '2px solid gray' : '',
             }}
           >
             {t(item)}

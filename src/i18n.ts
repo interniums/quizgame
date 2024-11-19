@@ -55,6 +55,7 @@ i18n.use(initReactI18next).init({
         retakeQuiz: 'Retake Quiz',
         download: 'Download my answers',
         next: 'Next',
+        invalidEmail: 'Invalid Email',
       },
     },
     fr: {
@@ -76,8 +77,7 @@ i18n.use(initReactI18next).init({
         age4: '50 + ans',
         ageQuestion: 'Quel est votre âge ?',
         chooseAge: 'Dites-nous quel âge vous avez',
-        hateObjectQuestion:
-          "Qu'est-ce que vous détestez le plus dans un livre ?",
+        hateObjectQuestion: "Qu'est-ce que vous détestez le plus dans un livre ?",
         chooseHateObject: 'Est-ce quelque chose qui vous dérange vraiment ?',
         hateObject1: 'Manque de logique',
         hateObject2: 'Un rythme lent',
@@ -102,13 +102,13 @@ i18n.use(initReactI18next).init({
         email: 'Email',
         enterEmail: 'Entrez votre e-mail pour un accès complet',
         yourEmail: 'Votre e-mail',
-        policy:
-          "En continuant, j'accepte la politique de confidentialité et les conditions d'utilisation.",
+        policy: "En continuant, j'accepte la politique de confidentialité et les conditions d'utilisation.",
         thanks: "Vous l'avez fait !",
         comment: "J'ai hâte de vous rencontrer à nouveau...",
         retakeQuiz: 'Reprendre le quiz',
         download: 'Téléchargez mes réponses',
         next: 'Suivant',
+        invalidEmail: 'Email Invalide',
       },
     },
     de: {
@@ -156,12 +156,12 @@ i18n.use(initReactI18next).init({
         email: 'E-Mail',
         enterEmail: 'Geben Sie Ihre E-Mail ein, um vollen Zugang zu erhalten',
         yourEmail: 'Ihre E-Mail',
-        policy:
-          'Indem Sie fortfahren, stimme ich der Datenschutzrichtlinie und den Nutzungsbedingungen zu.',
+        policy: 'Indem Sie fortfahren, stimme ich der Datenschutzrichtlinie und den Nutzungsbedingungen zu.',
         thanks: 'Du hast es geschafft!',
         comment: 'Ich kann es kaum erwarten, dich wieder zu treffen...',
         retakeQuiz: 'Quiz erneut machen',
         download: 'Lade meine Antworten herunter',
+        invalidEmail: 'Ungültige E-Mail',
       },
     },
     es: {
@@ -207,15 +207,14 @@ i18n.use(initReactI18next).init({
         loading: '¡Casi listo!',
         findingCollections: 'Buscando colecciones para ti',
         email: 'Correo electrónico',
-        enterEmail:
-          'Ingresa tu correo electrónico para obtener acceso completo',
+        enterEmail: 'Ingresa tu correo electrónico para obtener acceso completo',
         yourEmail: 'Tu correo electrónico',
-        policy:
-          'Al continuar, acepto la Política de privacidad y los Términos de uso.',
+        policy: 'Al continuar, acepto la Política de privacidad y los Términos de uso.',
         thanks: '¡Lo has logrado!',
         comment: 'No puedo esperar para volver a verte...',
         retakeQuiz: 'Volver a hacer el cuestionario',
         download: 'Descargar mis respuestas',
+        invalidEmail: 'Correo Electrónico no Válidas',
       },
     },
   },

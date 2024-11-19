@@ -14,9 +14,15 @@ const langMap: Record<Language, string> = {
 function App() {
   const { globalState, setGlobalState } = useGlobalContext()
   const navigate = useNavigate()
-  const language = globalState?.answers?.language as Language
   const [screenHeight, setScreenHeight] = useState(window.innerHeight)
   console.log(globalState)
+  const [language, setLanguage] = useState(globalState?.answers?.language as Language)
+
+  useEffect(() => {
+    if (globalState?.answers?.language) {
+      setLanguage(globalState.answers.language as Language)
+    }
+  }, [globalState?.answers?.language])
 
   useEffect(() => {
     const handleResize = () => {
@@ -60,6 +66,9 @@ function App() {
     const nextPath = globalState.paths[globalState.progress]
     if (nextPath && nextPath !== window.location.pathname) {
       navigate(nextPath)
+    }
+    if (globalState.answers.preferences.length) {
+      navigate('/email')
     }
     if (globalState.answers.email.length) {
       navigate('/result')

@@ -12,11 +12,7 @@ type OutletContextType = {
   screenHeight: number
 }
 
-const Header: React.FC<HeaderProps> = ({
-  progress,
-  globalState,
-  setGlobalState,
-}: HeaderProps) => {
+const Header: React.FC<HeaderProps> = ({ progress, globalState, setGlobalState }: HeaderProps) => {
   const { screenHeight } = useOutletContext<OutletContextType>()
 
   return (
@@ -34,20 +30,14 @@ const Header: React.FC<HeaderProps> = ({
             <img
               src={leftArrow}
               alt="back"
-              className={`mr-1 ${
-                screenHeight < 700 ? 'size-10' : 'size-12 md:size-14'
-              }`}
+              className={`mr-1 ${screenHeight < 700 ? 'size-10' : 'size-12 md:size-14'}`}
             />
           </button>
           <div
-            className={`flex-1 text-center text-xl md:text-2xl mr-12 font-bold ${
-              screenHeight < 700 ? 'text-lg' : ''
-            }`}
+            className={`flex-1 text-center mr-12 font-bold ${screenHeight < 700 ? 'text-lg' : 'text-xl md:text-2xl'}`}
           >
             <span
-              className={`transition-all duration-700 ease-in-out ${
-                progress !== 4 ? 'text-slate-500' : 'text-black'
-              }`}
+              className={`transition-all duration-700 ease-in-out ${progress !== 4 ? 'text-slate-500' : 'text-black'}`}
             >
               {progress + 1}
             </span>{' '}
@@ -56,8 +46,8 @@ const Header: React.FC<HeaderProps> = ({
         </div>
         <div className="w-full flex items-center justify-center">
           <div
-            className={`w-full h-3 md:h-4 bg-slate-400 rounded-full grid grid-cols-5 overflow-hidden ${
-              screenHeight < 700 ? 'h-2' : ''
+            className={`w-full bg-slate-400 rounded-full grid grid-cols-5 overflow-hidden ${
+              screenHeight < 700 ? 'h-2' : 'h-3 md:h-4'
             }`}
           >
             {[0, 1, 2, 3, 4].map((level) => (
@@ -65,9 +55,7 @@ const Header: React.FC<HeaderProps> = ({
                 key={level}
                 className={`h-full transition-all duration-700 ease-in-out ${
                   progress >= level ? 'bg-black' : 'bg-slate-400'
-                } ${level === 0 ? 'rounded-l-full' : ''} ${
-                  level === 4 ? 'rounded-r-full' : ''
-                }`}
+                } ${level === 0 ? 'rounded-l-full' : ''} ${level === 4 ? 'rounded-r-full' : ''}`}
                 style={{
                   width: `${progress >= level ? 100 : 0}%`,
                 }}

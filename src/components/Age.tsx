@@ -50,32 +50,27 @@ export default function Age() {
       className="w-full h-full flex flex-col items-center px-8 flex-grow justify-center"
     >
       <div className="grid gap-4">
-        <h1
-          className={`text-center text-2xl md:text-3xl font-bold ${
-            screenHeight < 750 ? 'text-xl' : ''
-          }`}
-        >
+        <h1 className={`text-center font-bold ${screenHeight < 750 ? 'text-xl' : 'text-2xl md:text-3xl'}`}>
           {t('ageQuestion')}
         </h1>
-        <p
-          className={`text-center text-sm md:text-base opacity-70 ${
-            screenHeight < 750 ? 'text-xs' : ''
-          }`}
-        >
+        <p className={`text-center opacity-70 ${screenHeight < 750 ? 'text-xs' : 'text-sm md:text-base'}`}>
           {t('chooseAge')}
         </p>
       </div>
-      <div className="mt-10 md:mt-20 grid gap-4 w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
+      <div
+        className={`grid gap-4 w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5 ${
+          screenHeight < 750 ? 'mt-10' : 'mt-10 md:mt-20'
+        }`}
+      >
         {ages?.map((item) => (
           <button
             onClick={() => handleSelect(item)}
             key={item}
-            className={`border rounded-lg w-full text-center text-2xl md:text-3xl hover:bg-slate-100 flex items-center justify-center shadow-sm transition-all duration-200 ease-in-out ${
-              screenHeight < 750 ? 'text-lg py-3' : 'py-4'
+            className={`border rounded-lg w-full text-center hover:bg-slate-100 flex items-center justify-center shadow-sm transition-all duration-200 ease-in-out ${
+              screenHeight < 750 ? 'text-lg py-3' : 'py-4 text-2xl md:text-3xl'
             }`}
             style={{
-              outline:
-                globalState?.answers?.age === item ? '2px solid gray' : '',
+              outline: globalState?.answers?.age === item ? '2px solid gray' : '',
             }}
           >
             {t(item)}

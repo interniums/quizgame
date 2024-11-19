@@ -14,15 +14,8 @@ const HATEOBJECTS_ENDPOINT = 'https://quizproject/questions/hate-objects'
 export default function HateObjects() {
   const { globalState, setGlobalState } = useGlobalContext()
   const { t } = useTranslation()
-  const [hateObjects, setHateObjects] = useState<string[]>([
-    'hateObject1',
-    'hateObject2',
-    'hateObject3',
-    'hateObject4',
-  ])
-  const [choosenObjects, setChoosenObjects] = useState<string[]>(
-    globalState.answers.hate || []
-  )
+  const [hateObjects, setHateObjects] = useState<string[]>(['hateObject1', 'hateObject2', 'hateObject3', 'hateObject4'])
+  const [choosenObjects, setChoosenObjects] = useState<string[]>(globalState.answers.hate || [])
   const { screenHeight } = useOutletContext<OutletContextType>()
 
   // restfull implementation. if used, add loading and error state
@@ -69,26 +62,18 @@ export default function HateObjects() {
       }}
       className="w-full h-full flex flex-col items-center px-8 flex-grow justify-around"
     >
-      <div>
-        <div className="grid gap-4">
-          <h1
-            className={`text-center text-2xl md:text-3xl font-bold ${
-              screenHeight < 750 ? 'text-xl' : ''
-            }`}
-          >
+      <div className="flex flex-col items-center justify-center w-full">
+        <div className="grid gap-4 mb-6">
+          <h1 className={`text-center font-bold ${screenHeight < 750 ? 'text-xl' : 'text-2xl md:text-3xl'}`}>
             {t('hateObjectQuestion')}
           </h1>
-          <p
-            className={`text-center text-sm md:text-base opacity-70 px-4 ${
-              screenHeight < 750 ? 'text-xs' : ''
-            }`}
-          >
+          <p className={`text-center text-sm md:text-base opacity-70 px-4 ${screenHeight < 750 ? 'text-xs' : ''}`}>
             {t('chooseHateObject')}
           </p>
         </div>
         <div
-          className={`mt-10 md:mt-20 grid w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5 ${
-            screenHeight < 750 ? 'gap-3' : 'gap-4'
+          className={`grid w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5 ${
+            screenHeight < 750 ? 'gap-3 mt-10' : 'gap-4 md:mt-20'
           }`}
         >
           {hateObjects?.map((item) => (
@@ -106,9 +91,7 @@ export default function HateObjects() {
               <input
                 type="checkbox"
                 checked={choosenObjects.includes(item) ? true : false}
-                className={`accent-slate-500 text-white ${
-                  screenHeight < 750 ? 'size-4' : 'size-5 md:size-6'
-                }`}
+                className={`accent-slate-500 text-white ${screenHeight < 750 ? 'size-4' : 'size-5 md:size-6'}`}
               />
             </button>
           ))}
@@ -117,9 +100,9 @@ export default function HateObjects() {
       <div className="w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
         <button
           onClick={() => handleSubmit()}
-          className={`border rounded-lg w-full text-center text-2xl md:text-3xl flex items-center justify-center transition-all duration-400 ease-in-out bg-slate-100 ${
-            choosenObjects.length ? 'hover:bg-slate-100 shadow-md bg-white' : ''
-          } ${screenHeight < 750 ? 'py-2.5' : 'py-3 md:py-4'}`}
+          className={`border rounded-lg w-full text-center flex items-center justify-center transition-all duration-400 ease-in-out ${
+            choosenObjects.length ? 'hover:bg-slate-100 shadow-md bg-white' : 'bg-slate-200'
+          } ${screenHeight < 750 ? 'py-2.5 text-xl' : 'py-3 md:py-4 text-2xl md:text-3xl'}`}
           disabled={!choosenObjects.length ? true : false}
         >
           {t('next')}
