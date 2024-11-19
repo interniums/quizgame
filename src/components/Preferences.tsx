@@ -177,7 +177,9 @@ export default function Preferences() {
         <button
           onClick={() => handleSubmit()}
           className={`border rounded-lg w-full text-center flex items-center justify-center transition-all duration-200 ease-in-out ${
-            choosenPreferences.length ? 'hover:bg-slate-100 shadow-md bg-white' : 'bg-slate-200'
+            choosenPreferences.length
+              ? 'hover:bg-slate-800 shadow-md bg-slate-900 text-white'
+              : 'bg-slate-200 text-black'
           } ${screenHeight < 750 ? 'py-2.5 text-xl' : 'py-3 md:py-4 text-2xl md:text-3xl'}`}
           disabled={!choosenPreferences.length ? true : false}
         >

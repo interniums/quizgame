@@ -47,14 +47,11 @@ export default function EmailPage() {
           </p>
         </div>
         <div className="w-full mt-20">
-          <p style={{ opacity: invalidEmail ? '1' : '0' }} className="text-red-500 text-center font-bold mb-2">
-            {t('invalidEmail')}
-          </p>
           <input
             ref={emailRef}
             type="text"
             className={`rounded-lg bg-slate-100 border shadow-sm outline-none w-full hover:bg-slate-200 text-xl transition-all duration-400 ease-in-out ${
-              invalidEmail ? 'outline-2 outline-red-500' : ''
+              invalidEmail ? 'outline-2 outline-red-500' : 'focus:outline-slate-800'
             } ${screenHeight < 750 ? 'py-3 px-6 text-base' : 'py-4 md:py-6 px-8 text-lg md:text-xl'}`}
             placeholder={t('yourEmail')}
             onChange={(e) => {
@@ -62,6 +59,9 @@ export default function EmailPage() {
               setInvalidEmail(false)
             }}
           />
+          <p style={{ opacity: invalidEmail ? '1' : '0' }} className="text-red-500 text-start font-bold mt-2">
+            {t('invalidEmail')}
+          </p>
           <div className="w-full px-10">
             <p
               className={`mt-14 text-center text-sm opacity-70 hover:text-blue-500 ${
@@ -77,9 +77,9 @@ export default function EmailPage() {
         <button
           onClick={() => handleSubmit()}
           className={`border rounded-lg w-full text-center flex items-center justify-center transition-all duration-400 ease-in-out bg-slate-200 mt-32 ${
-            email.length ? 'hover:bg-slate-100 shadow-md bg-white' : ''
+            email.length ? 'hover:bg-slate-800 shadow-md bg-slate-900 text-white' : 'bg-slate-200 text-black'
           } ${screenHeight < 750 ? 'text-xl py-3' : 'text-2xl py-4'}`}
-          disabled={!email.length ? true : false}
+          disabled={!email.length}
         >
           {t('next')}
         </button>
