@@ -17,9 +17,20 @@ export default function EmailPage() {
   const navigate = useNavigate()
   const emailRegex = /^(?!\s*$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
   const { screenHeight } = useOutletContext<OutletContextType>()
+  const [errorMessage, setErrorMessage] = useState<string>('emailError1')
 
   const handleSubmit = () => {
     if (!emailRegex.test(email)) {
+      if (!email.includes('@')) {
+        setErrorMessage('emailError1')
+      } else if (email.split('@').length > 2) {
+        setErrorMessage('emailError2')
+      } else if (!email.includes('.')) {
+        setErrorMessage('emailError3')
+      } else {
+        setErrorMessage('emailError4')
+      }
+
       setInvalidEmail(true)
       if (emailRef.current) {
         emailRef.current.focus()
@@ -49,7 +60,7 @@ export default function EmailPage() {
         <div className="w-full mt-20">
           <input
             ref={emailRef}
-            type="text"
+            type="email"
             className={`rounded-lg bg-slate-100 border shadow-sm outline-none w-full hover:bg-slate-200 text-xl transition-all duration-400 ease-in-out ${
               invalidEmail ? 'outline-2 outline-red-500' : 'focus:outline-slate-800'
             } ${screenHeight < 750 ? 'py-3 px-6 text-base' : 'py-4 md:py-6 px-8 text-lg md:text-xl'}`}
@@ -60,7 +71,7 @@ export default function EmailPage() {
             }}
           />
           <p style={{ opacity: invalidEmail ? '1' : '0' }} className="text-red-500 text-start font-bold mt-2">
-            {t('invalidEmail')}
+            {t(`${errorMessage}`)}
           </p>
           <div className="w-full px-10">
             <p
