@@ -61,7 +61,7 @@ export default function EmailPage() {
           <input
             ref={emailRef}
             type="email"
-            className={`rounded-lg bg-slate-100 border shadow-sm outline-none w-full hover:bg-slate-200 text-xl transition-all duration-400 ease-in-out ${
+            className={`rounded-lg bg-slate-100 border shadow-sm outline-none w-full hover:bg-slate-200 transition-all duration-400 ease-in-out ${
               invalidEmail ? 'outline-2 outline-red-500' : 'focus:outline-slate-800'
             } ${screenHeight < 750 ? 'py-3 px-6 text-base' : 'py-4 md:py-6 px-8 text-lg md:text-xl'}`}
             placeholder={t('yourEmail')}
@@ -89,7 +89,7 @@ export default function EmailPage() {
           onClick={() => handleSubmit()}
           className={`border rounded-lg w-full text-center flex items-center justify-center transition-all duration-400 ease-in-out bg-slate-200 mt-32 ${
             email.length ? 'hover:bg-slate-800 shadow-md bg-slate-900 text-white' : 'bg-slate-100 text-black'
-          } ${screenHeight < 750 ? 'text-xl py-3' : 'text-2xl py-4'}`}
+          } ${screenHeight < 750 ? 'text-xl py-2.5' : 'text-2xl py-4'}`}
           disabled={!email.length}
         >
           {t('next')}
