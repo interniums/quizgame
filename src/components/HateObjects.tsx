@@ -101,7 +101,7 @@ export default function HateObjects() {
         <button
           onClick={() => handleSubmit()}
           className={`border rounded-lg w-full text-center flex items-center justify-center transition-all duration-400 ease-in-out ${
-            choosenObjects.length ? 'hover:bg-slate-100 shadow-md bg-slate-900 text-white' : 'bg-slate-200 text-black'
+            choosenObjects.length ? 'hover:bg-slate-100 shadow-md bg-slate-900 text-white' : 'bg-slate-100 text-black'
           } ${screenHeight < 750 ? 'py-2.5 text-xl' : 'py-3 md:py-4 text-2xl md:text-3xl'}`}
           disabled={!choosenObjects.length}
         >

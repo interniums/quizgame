@@ -142,7 +142,7 @@ export default function ResultPage() {
       </div>
       <div className="w-full md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
         <button
-          className={`border rounded-lg w-full text-center flex items-center justify-center transition-all duration-400 ease-in-out shadow-md hover:bg-slate-100 ${
+          className={`border bg-slate-800 text-white rounded-lg w-full text-center flex items-center justify-center transition-all duration-400 ease-in-out shadow-md hover:bg-slate-700 ${
             screenHeight < 750 ? 'text-xl py-2' : 'py-3 md:py-4 text-2xl md:text-3xl'
           }`}
           onClick={() => handleRetakeQuiz()}

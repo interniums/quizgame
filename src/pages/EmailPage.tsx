@@ -77,7 +77,7 @@ export default function EmailPage() {
         <button
           onClick={() => handleSubmit()}
           className={`border rounded-lg w-full text-center flex items-center justify-center transition-all duration-400 ease-in-out bg-slate-200 mt-32 ${
-            email.length ? 'hover:bg-slate-800 shadow-md bg-slate-900 text-white' : 'bg-slate-200 text-black'
+            email.length ? 'hover:bg-slate-800 shadow-md bg-slate-900 text-white' : 'bg-slate-100 text-black'
           } ${screenHeight < 750 ? 'text-xl py-3' : 'text-2xl py-4'}`}
           disabled={!email.length}
         >
